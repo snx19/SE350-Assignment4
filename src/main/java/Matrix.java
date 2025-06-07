@@ -39,8 +39,11 @@ public class Matrix {
      * @param c character
      */
     public void setCell(int x, int y, char c) {
-        data[y][x] = c;
-    }
+        if (x < 0 || x >= getCols() || y < 0 || y >= getRows()) {
+            return;
+        }
+        data[y][x] = c;}
+
     /**
      * Returns cell value
      * @param x x position
