@@ -14,6 +14,24 @@ public class Turtle {
         this.penDown = false;
     }
 
+    public Memento save () {
+        char[][] snapshot = new char[matrix.getRows()][matrix.getCols()];
+        for (int i = 0; i < matrix.getRows(); i++) {
+            System.arraycopy(matrix.getRow(i), 0, snapshot[i], 0, matrix.getCols());
+        }
+        return new Memento(x, y, direction, penDown, snapshot);
+    }
+
+    public void restore(Memento memento) {
+        this.x = memento.x;
+        this.y = memento.y;
+        this.direction = memento.direction;
+        this.penDown = memento.penDown;
+        for (int i = 0; i < matrix.getRows(); i++) {
+            System.arraycopy(memento.matrixSnapshot[i], 0, matrix.getRow(i), 0, matrix.getCols());
+        }
+    }
+
     public void move(double distance) {
         double radians = Math.toRadians(direction);
         double newX = x + (distance * Math.cos(radians));
