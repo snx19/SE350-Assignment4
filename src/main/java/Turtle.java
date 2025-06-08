@@ -55,4 +55,13 @@ public class Turtle {
     public Matrix getMatrix() {
         return matrix;
     }
+
+    public void moveTo(double newX, double newY) {
+        this.x = newX;
+        this.y = newY;
+    }
+
+    public void setDirection(double newDirection) {
+        this.direction = newDirection;
+    }
 }
