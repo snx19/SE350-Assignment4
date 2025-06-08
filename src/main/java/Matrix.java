@@ -84,4 +84,7 @@ public class Matrix {
         }
     }
 
+    public char[] getRow(int i) {
+        return data[i];
+    }
 }
